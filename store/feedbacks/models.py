@@ -1,4 +1,5 @@
 # coding: utf8
+from logging import getLogger
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -6,6 +7,9 @@ from django.utils.translation import ugettext_lazy as _
 from django_geoip.models import IpRange
 
 from libs.models import CreateUpdate, ActiveState, ActiveManager
+
+
+logger = getLogger(__name__)
 
 
 class Request(CreateUpdate, ActiveState):
@@ -29,10 +33,11 @@ class Request(CreateUpdate, ActiveState):
     def __str__(self):
         return '{} #{}'.format(_('request'), self.pk)
 
-    def set_city(self):
-        try:        
-            self.range = IpRange.objects.by_ip(self.ip)
-            self.city = self.range.city.name
-            return self.range
-        except IpRange.DoesNotExist:
-            return None
+    def save(self, *args, **kwargs):
+        if self.ip:
+            try:
+                self.range = IpRange.objects.by_ip(self.ip)
+                self.city = self.range.city.name
+            except (IpRange.DoesNotExist, AttributeError):
+                logger.warning('unknown ip address: %s', self.ip)
+        super(Request, self).save(*args, **kwargs)

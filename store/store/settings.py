@@ -136,5 +136,53 @@ IMAGES_DIR = 'product_images'
 STATIC_ROOT = os.path.join(BASE_DIR, 'store', 'static')
 STATIC_URL = '/static/'
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(lineno)d [%(process)d %(thread)d]  %(message)s'
+        },
+        'funcs': {
+            'format': '%(levelname)s %(asctime)s %(pathname)s %(funcName)s:%(lineno)d : %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(module)s %(funcName)s:%(lineno)d %(message)s'
+        },
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+    },
+    'handlers': {
+        'null': {
+            'level': 'DEBUG',
+            'class': 'logging.NullHandler',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'funcs'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler',
+            'include_html': True,
+            'formatter': 'funcs'
+        }
+    },
+    'loggers': {},
+}
+LOGGING_APPS = ('products', 'feedbacks', 'store')
+
+for log_app in LOGGING_APPS:
+    LOGGING["loggers"][log_app] = {
+        'handlers': ['console', 'mail_admins'],
+        'level': 'DEBUG' if DEBUG else 'INFO',
+        'propagate': True,
+    }
+
 # overwrite custom settings
 from .settings_local import LANGUAGE_CODE, TIME_ZONE, SECRET_KEY, DATABASES

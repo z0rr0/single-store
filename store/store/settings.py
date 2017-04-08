@@ -185,5 +185,31 @@ for log_app in LOGGING_APPS:
         'propagate': True,
     }
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
+EMAIL_TIMEOUT = None
+EMAIL_SSL_KEYFILE = None
+EMAIL_SSL_CERTFILE = None
+
 # overwrite custom settings
-from .settings_local import LANGUAGE_CODE, TIME_ZONE, SECRET_KEY, DATABASES
+from .settings_local import (
+    DATABASES,
+    EMAIL_BACKEND,
+    EMAIL_HOST,
+    EMAIL_HOST_PASSWORD,
+    EMAIL_HOST_USER,
+    EMAIL_PORT,
+    EMAIL_SSL_CERTFILE,
+    EMAIL_SSL_KEYFILE,
+    EMAIL_TIMEOUT,
+    EMAIL_USE_SSL,
+    EMAIL_USE_TLS,
+    LANGUAGE_CODE,
+    SECRET_KEY,
+    TIME_ZONE,
+)

@@ -92,3 +92,4 @@ ENV/
 /store/store/settings_local.py
 /store/db.sqlite3
 /store/store/media/product_images/*
+/store/store/static/

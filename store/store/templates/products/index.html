@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-hello world - {{ a }} - {{ b }}
+  hello world - {{ a }} - {{ b }} -
+  {% for product in products %}
+    <p>{{ product }}</p>
+  {% endfor %}
+
 {% endblock %}

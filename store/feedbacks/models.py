@@ -7,6 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from django_geoip.models import IpRange
 
 from libs.models import CreateUpdate, ActiveState, ActiveManager
+from products.models import Product
 
 
 logger = getLogger(__name__)
@@ -21,6 +22,8 @@ class Request(CreateUpdate, ActiveState):
     ip = models.GenericIPAddressField(_('IP address'), blank=True, null=True)
     city = models.CharField(_('city'), max_length=255, blank=True)
     range = models.ForeignKey(IpRange, verbose_name=_('IP range'), blank=True, null=True)
+    product = models.ForeignKey(Product, verbose_name=_('product'), blank=True, null=True)
+    comment = models.TextField(_('comment'), blank=True)
 
     objects = models.Manager()
     objects_active = ActiveManager()

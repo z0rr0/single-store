@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -197,19 +198,7 @@ EMAIL_SSL_KEYFILE = None
 EMAIL_SSL_CERTFILE = None
 
 # overwrite custom settings
-from .settings_local import (
-    DATABASES,
-    EMAIL_BACKEND,
-    EMAIL_HOST,
-    EMAIL_HOST_PASSWORD,
-    EMAIL_HOST_USER,
-    EMAIL_PORT,
-    EMAIL_SSL_CERTFILE,
-    EMAIL_SSL_KEYFILE,
-    EMAIL_TIMEOUT,
-    EMAIL_USE_SSL,
-    EMAIL_USE_TLS,
-    LANGUAGE_CODE,
-    SECRET_KEY,
-    TIME_ZONE,
-)
+try:
+    from .settings_local import *
+except ImportError:
+    print('local settings ImportError')

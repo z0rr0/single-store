@@ -94,3 +94,4 @@ ENV/
 /store/store/media/product_images/
 /store/store/static/
 .idea/
+/store/maxmind/

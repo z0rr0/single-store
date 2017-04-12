@@ -11,7 +11,7 @@ from products.models import Product
 logger = getLogger(__name__)
 
 
-# @cache_page(30 * 60)
+@cache_page(15 * 60)
 def index(request: HttpRequest):
     products = Product.objects.all()
     context = {'a': 1, 'b': 'Hi All!', 'products': products}

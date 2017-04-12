@@ -54,6 +54,8 @@ class Product(CreateUpdate, ActiveState):
         validators=[MinValueValidator(0)]
     )
     images = models.ManyToManyField(Image, through='Gallery', blank=True)
+    description = models.TextField(_('description'), blank=True)
+    specification = models.TextField(_('specification'), blank=True)
 
     objects = models.Manager()
     objects_active = ActiveManager()
@@ -65,6 +67,14 @@ class Product(CreateUpdate, ActiveState):
         ordering = ['name']
         verbose_name = _('product')
         verbose_name_plural = _('products')
+
+    @property
+    def final_discount(self):
+        return self.price * self.discount_rel + self.discount_abs
+
+    @property
+    def final_price(self):
+        return self.price - self.final_discount
 
 
 class Gallery(models.Model):

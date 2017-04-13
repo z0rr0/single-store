@@ -7,53 +7,73 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-13 01:03+0300\n"
-"PO-Revision-Date: 2017-04-13 01:08+0300\n"
+"POT-Creation-Date: 2017-04-13 23:00+0300\n"
+"PO-Revision-Date: 2017-04-13 23:01+0300\n"
+"Last-Translator: Alexander Zaytsev <thebestzorro@yandex.ru>\n"
+"Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Last-Translator: Alexander Zaytsev <thebestzorro@yandex.ru>\n"
-"Language-Team: \n"
 "X-Generator: Poedit 1.8.4\n"
 
-#: feedbacks/models.py:19
+#: feedbacks/models.py:23
+msgid "waiting"
+msgstr "ожидающий"
+
+#: feedbacks/models.py:24
+msgid "confirmed"
+msgstr "подтвержден"
+
+#: feedbacks/models.py:25
+msgid "rejected"
+msgstr "отклонен"
+
+#: feedbacks/models.py:26
+msgid "handled"
+msgstr "обработан"
+
+#: feedbacks/models.py:29
 msgid "phone"
 msgstr "телефон"
 
-#: feedbacks/models.py:20 products/models.py:12 products/models.py:39
+#: feedbacks/models.py:30 products/models.py:12 products/models.py:39
 msgid "name"
 msgstr "название"
 
-#: feedbacks/models.py:21
+#: feedbacks/models.py:31
 msgid "email"
 msgstr "эл. почта"
 
-#: feedbacks/models.py:22
+#: feedbacks/models.py:32
 msgid "IP address"
 msgstr "IP адрес"
 
-#: feedbacks/models.py:23
+#: feedbacks/models.py:33
 msgid "city"
 msgstr "город"
 
-#: feedbacks/models.py:24
-msgid "IP range"
-msgstr "IP диапазон"
-
-#: feedbacks/models.py:25 products/models.py:68
+#: feedbacks/models.py:34 products/models.py:68
 msgid "product"
 msgstr "товар"
 
-#: feedbacks/models.py:26
+#: feedbacks/models.py:36
+msgid "validation"
+msgstr "проверка"
+
+#: feedbacks/models.py:38
 msgid "comment"
 msgstr "комментарий"
 
-#: feedbacks/models.py:33 feedbacks/models.py:37
+#: feedbacks/models.py:39
+msgid "internal comment"
+msgstr "внутренний комментарий"
+
+#: feedbacks/models.py:46 feedbacks/models.py:50
 msgid "request"
 msgstr "запрос"
 
-#: feedbacks/models.py:34
+#: feedbacks/models.py:47
 msgid "requests"
 msgstr "запросы"
 
@@ -128,3 +148,6 @@ msgstr "галерея"
 #: products/models.py:90
 msgid "galleries"
 msgstr "галереи"
+
+#~ msgid "IP range"
+#~ msgstr "IP диапазон"

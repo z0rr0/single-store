@@ -14,14 +14,29 @@ logger = getLogger(__name__)
 
 class Request(CreateUpdate, ActiveState):
     """Customers' requests"""
+    VALIDATION_WAITING = 'waiting'
+    VALIDATION_CONFIRMED = 'confirmed'
+    VALIDATION_REJECTED = 'rejected'
+    VALIDATION_HANDLED = 'handled'
+
+    VALIDATION_CHOICES = (
+        (VALIDATION_WAITING, _('waiting')),
+        (VALIDATION_CONFIRMED, _('confirmed')),
+        (VALIDATION_HANDLED, _('rejected')),
+        (VALIDATION_REJECTED, _('handled')),
+    )
 
     phone = models.CharField(_('phone'), max_length=20)
     name = models.CharField(_('name'), max_length=512)
     email = models.CharField(_('email'), max_length=128, blank=True)
     ip = models.GenericIPAddressField(_('IP address'), blank=True, null=True)
     city = models.CharField(_('city'), max_length=255, blank=True)
-    product = models.ForeignKey('products.Product', verbose_name=_('product'), blank=True, null =True)
+    product = models.ForeignKey('products.Product', verbose_name=_('product'), blank=True, null=True)
+    validation = models.CharField(
+        _('validation'), max_length=32, choices=VALIDATION_CHOICES, default=VALIDATION_WAITING, db_index=True
+    )
     comment = models.TextField(_('comment'), blank=True)
+    internal_comment = models.TextField(_('internal comment'), blank=True)
 
     objects = models.Manager()
     objects_active = ActiveManager()

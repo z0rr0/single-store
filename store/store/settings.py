@@ -208,6 +208,8 @@ EMAIL_TIMEOUT = None
 EMAIL_SSL_KEYFILE = None
 EMAIL_SSL_CERTFILE = None
 
+SELLERS_EMAILS = ('amdin@localhost',)
+
 # overwrite custom settings
 try:
     from .settings_local import *

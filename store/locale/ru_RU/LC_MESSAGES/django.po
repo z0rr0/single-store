@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-13 23:00+0300\n"
-"PO-Revision-Date: 2017-04-13 23:01+0300\n"
+"POT-Creation-Date: 2017-04-15 22:29+0300\n"
+"PO-Revision-Date: 2017-04-15 22:32+0300\n"
 "Last-Translator: Alexander Zaytsev <thebestzorro@yandex.ru>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -37,7 +37,8 @@ msgstr "обработан"
 msgid "phone"
 msgstr "телефон"
 
-#: feedbacks/models.py:30 products/models.py:12 products/models.py:39
+#: feedbacks/models.py:30 feedbacks/models.py:80 products/models.py:12
+#: products/models.py:39
 msgid "name"
 msgstr "название"
 
@@ -76,6 +77,62 @@ msgstr "запрос"
 #: feedbacks/models.py:47
 msgid "requests"
 msgstr "запросы"
+
+#: feedbacks/models.py:68
+msgid "plain text"
+msgstr "простой текст"
+
+#: feedbacks/models.py:69
+msgid "html"
+msgstr "HTML"
+
+#: feedbacks/models.py:70
+msgid "multipart content"
+msgstr "составное содержимое"
+
+#: feedbacks/models.py:76
+msgid "request confirmation"
+msgstr "подтвреждение запроса"
+
+#: feedbacks/models.py:77
+msgid "seller notification"
+msgstr "уведомление продавцу"
+
+#: feedbacks/models.py:82
+msgid "basic"
+msgstr "основной"
+
+#: feedbacks/models.py:82
+msgid "basic template (can be only one for every assignment)"
+msgstr "основной шаблон (может быть только один для каждого назначения)"
+
+#: feedbacks/models.py:84
+msgid "method"
+msgstr "метод"
+
+#: feedbacks/models.py:86
+msgid "assignment"
+msgstr "назначение"
+
+#: feedbacks/models.py:88
+msgid "subject"
+msgstr "тема"
+
+#: feedbacks/models.py:89
+msgid "body"
+msgstr "тело"
+
+#: feedbacks/models.py:90
+msgid "HTML body"
+msgstr "HTML тело"
+
+#: feedbacks/models.py:94
+msgid "email template"
+msgstr "шаблон эл. письма"
+
+#: feedbacks/models.py:95
+msgid "email templates"
+msgstr "шаблоны эл. писем"
 
 #: libs/models.py:9
 msgid "modified"

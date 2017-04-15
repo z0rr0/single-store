@@ -6,11 +6,13 @@ from .models import Category, Image, Product, Gallery
 from libs.utils import round_money
 
 
+@admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'modified')
     list_filter = ('modified',)
 
 
+@admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
     list_display = ('name', 'height', 'width', 'size', 'modified')
     list_filter = ('modified',)
@@ -28,6 +30,7 @@ class ImageAdmin(admin.ModelAdmin):
         return obj.picture.width
 
 
+@admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('name', 'category', 'price', 'discount_rel', 'discount_abs', 'final_price')
     list_filter = ('category', 'modified', 'created')
@@ -37,11 +40,6 @@ class ProductAdmin(admin.ModelAdmin):
         return round_money(obj.final_price)
 
 
+@admin.register(Gallery)
 class GalleryAdmin(admin.ModelAdmin):
     list_display = ('image', 'product')
-
-
-admin.site.register(Category, CategoryAdmin)
-admin.site.register(Image, ImageAdmin)
-admin.site.register(Product, ProductAdmin)
-admin.site.register(Gallery, GalleryAdmin)

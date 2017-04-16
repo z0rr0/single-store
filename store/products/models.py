@@ -77,6 +77,16 @@ class Product(CreateUpdate, ActiveState):
     def final_price(self):
         return self.price - self.final_discount
 
+    @property
+    def one_image(self):
+        return self.gallery_set.first()
+
+    @property
+    def short_description(self):
+        if self.description:
+            return self.description.split('\n')[0]
+        return ''
+
 
 class Gallery(models.Model):
     image = models.ForeignKey(Image, on_delete=models.CASCADE)

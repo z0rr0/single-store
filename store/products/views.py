@@ -18,18 +18,30 @@ DEFAULT_POPULAR_SIZE = 3
 DEFAULT_CATEGORIES_ROW = 3
 
 
-def _popular_products(size=DEFAULT_POPULAR_SIZE):
+def _popular_products():
     qs = Request.objects.filter(
         product__isnull=False
-    ).values('product_id').annotate(count=Count('id')).order_by('-count')[:size]
+    ).values('product_id').annotate(count=Count('id')).order_by('-count')[:DEFAULT_POPULAR_SIZE]
 
     popular_products, other_products = [p['product_id'] for p in qs], []
-    if len(qs) < size:
+    if len(qs) < DEFAULT_POPULAR_SIZE:
         other_products = list(
-            Product.objects.exclude(id__in=popular_products).values_list('id', flat=True)[:(size-len(qs))]
+            Product.objects.exclude(
+                id__in=popular_products
+            ).values_list('id', flat=True)[:(DEFAULT_POPULAR_SIZE-len(qs))]
         )
     product_ids = popular_products + other_products
-    return Product.objects.filter(id__in=product_ids)
+
+    classes = (
+        ('first-slide', ' active'),
+        ('second-slide', ''),
+        ('third-slide', ''),
+    )
+    products = []
+    for i, product in enumerate(Product.objects.filter(id__in=product_ids)):
+        class_name, active = classes[i]
+        products.append({'class': class_name, 'active': active, 'product': product})
+    return products
 
 
 @cache_page(30 * 60)

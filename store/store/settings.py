@@ -80,6 +80,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'store.context_processors.categories',
+                'store.context_processors.search',
             ],
         },
     },
@@ -209,6 +211,7 @@ EMAIL_SSL_KEYFILE = None
 EMAIL_SSL_CERTFILE = None
 
 SELLERS_EMAILS = ('amdin@localhost',)
+PRODUCT_PAGE_SIZE = 50
 
 # overwrite custom settings
 try:

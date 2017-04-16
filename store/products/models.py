@@ -11,6 +11,7 @@ class Category(CreateUpdate):
     """Product categories"""
     name = models.CharField(_('name'), max_length=255)
     description = models.TextField(_('description'), blank=True)
+    logo = models.ImageField(_('logo'), max_length=8192, upload_to=settings.IMAGES_DIR, blank=True, null=True)
 
     def __str__(self):
         return self.name

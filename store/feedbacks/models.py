@@ -119,5 +119,3 @@ class EmailTemplate(CreateUpdate):
     @property
     def is_multipart(self):
         return self.method == self.METHOD_MULTIPART
-
-

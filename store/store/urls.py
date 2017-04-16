@@ -21,7 +21,7 @@ from django.contrib import admin
 from products.views import index
 
 urlpatterns = [
-    # url(r'^products/', include('products.urls')),
+    url(r'^products/', include('products.urls')),
     url(r'^$', index, name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

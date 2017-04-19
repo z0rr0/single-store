@@ -211,7 +211,7 @@ EMAIL_SSL_KEYFILE = None
 EMAIL_SSL_CERTFILE = None
 
 SELLERS_EMAILS = ('amdin@localhost',)
-PRODUCT_PAGE_SIZE = 50
+PRODUCT_PAGE_SIZE = 20  # by 2 in row
 
 # overwrite custom settings
 try:

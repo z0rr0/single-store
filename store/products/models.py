@@ -1,9 +1,11 @@
 # coding: utf-8
+from decimal import Decimal
 
 from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+
 from libs.models import CreateUpdate, ActiveState, ActiveManager
 
 
@@ -70,19 +72,19 @@ class Product(CreateUpdate, ActiveState):
         verbose_name_plural = _('products')
 
     @property
-    def final_discount(self):
+    def final_discount(self) -> Decimal:
         return self.price * self.discount_rel + self.discount_abs
 
     @property
-    def final_price(self):
+    def final_price(self) -> Decimal:
         return self.price - self.final_discount
 
     @property
-    def one_image(self):
+    def one_image(self) -> Image:
         return self.gallery_set.first()
 
     @property
-    def short_description(self):
+    def short_description(self) -> str:
         if self.description:
             return self.description.split('\n')[0]
         return ''

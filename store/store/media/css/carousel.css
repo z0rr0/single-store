@@ -89,3 +89,25 @@ body {
     margin-top: 7rem;
   }
 }
+
+/* Custom products styles */
+
+.heading-category {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.heading-product {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.image-box {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 28px;
+  color: #19055a;
+}

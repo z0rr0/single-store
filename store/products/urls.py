@@ -2,9 +2,9 @@
 
 from django.conf.urls import url
 
-from products.views import search
+from products import views
 
 
 urlpatterns = [
-    url(r'^$', search, name='search'),
+    url(r'^$', views.search, name='search'),
 ]

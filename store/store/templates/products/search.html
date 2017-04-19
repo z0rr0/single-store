@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="container">
+    {% if category %}
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="heading-category">{{ category.name }}</h1>
+        </div>
+      </div>
+    {% endif %}
+
+    {% for products_row in products_rows %}
+      <div class="row">
+        {% for product in products_row %}
+          <div class="col-md-6">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h4 class="heading-product">{{ product.name }}</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="text-center image-box">
+                    <img src="{{ MEDIA_URL }}{{ product.one_image.image }}" class="rounded mx-auto d-block" alt="{{ product.name }}" width="350px">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="text-center price">
+                    {% if product.final_discount > 0 %}
+                      <small><s>{{ product.price|floatformat:"2" }}</s></small>
+                    {% endif %}
+                    &nbsp;
+                    <strong>{{ product.final_price|floatformat:"2" }} &#8381;</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="text-center">
+                    <a href="/" class="btn btn-info">Подробнее</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+  </div>
+{% endblock %}

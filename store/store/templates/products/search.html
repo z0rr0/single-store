@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Поиск{% endblock %}
+{% block title %}{% trans "Searching" %}{% endblock %}
 {% block jsblock %}
   <script>
     $(document).ready(function() {
@@ -17,7 +18,7 @@
           <h1 class="heading-category">{{ category.name }}</h1>
         {% else %}
           {% if name_search %}
-            <h1 class="heading-category">Поиск &laquo;{{ name_search }}&raquo;</h1>
+            <h1 class="heading-category">{% trans "Searching" %} &laquo;{{ name_search }}&raquo;</h1>
           {% endif %}
         {% endif %}
       </div>
@@ -56,7 +57,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="text-center">
-                    <a href="{% url 'info' product.id %}" class="btn btn-info">Подробнее</a>
+                    <a href="{% url 'info' product.id %}" class="btn btn-info">{% trans "Details" %}</a>
                   </div>
                 </div>
               </div>

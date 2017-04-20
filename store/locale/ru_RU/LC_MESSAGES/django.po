@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-15 22:29+0300\n"
-"PO-Revision-Date: 2017-04-15 22:32+0300\n"
+"POT-Creation-Date: 2017-04-21 01:08+0300\n"
+"PO-Revision-Date: 2017-04-21 01:10+0300\n"
 "Last-Translator: Alexander Zaytsev <thebestzorro@yandex.ru>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -37,8 +37,8 @@ msgstr "обработан"
 msgid "phone"
 msgstr "телефон"
 
-#: feedbacks/models.py:30 feedbacks/models.py:80 products/models.py:12
-#: products/models.py:39
+#: feedbacks/models.py:30 feedbacks/models.py:80 products/models.py:14
+#: products/models.py:42
 msgid "name"
 msgstr "название"
 
@@ -54,7 +54,7 @@ msgstr "IP адрес"
 msgid "city"
 msgstr "город"
 
-#: feedbacks/models.py:34 products/models.py:68
+#: feedbacks/models.py:34 products/models.py:71
 msgid "product"
 msgstr "товар"
 
@@ -154,57 +154,96 @@ msgstr "Скрытый"
 msgid "status"
 msgstr "статус"
 
-#: products/models.py:13 products/models.py:57
+#: products/models.py:15 products/models.py:60
 msgid "description"
 msgstr "описание"
 
-#: products/models.py:20 products/models.py:40
+#: products/models.py:16
+msgid "logo"
+msgstr "логотип"
+
+#: products/models.py:23 products/models.py:43
 msgid "category"
 msgstr "категория"
 
-#: products/models.py:21
+#: products/models.py:24
 msgid "categories"
 msgstr "категории"
 
-#: products/models.py:26
+#: products/models.py:29
 msgid "picture"
 msgstr "изображение"
 
-#: products/models.py:33
+#: products/models.py:36
 msgid "image"
 msgstr "изображение"
 
-#: products/models.py:34
+#: products/models.py:37
 msgid "images"
 msgstr "изображения"
 
-#: products/models.py:41
+#: products/models.py:44
 msgid "price"
 msgstr "цена"
 
-#: products/models.py:43
+#: products/models.py:46
 msgid "relative discount"
 msgstr "относительная скидка"
 
-#: products/models.py:50
+#: products/models.py:53
 msgid "absolute discount"
 msgstr "абсолютная скидка"
 
-#: products/models.py:58
+#: products/models.py:61
 msgid "specification"
 msgstr "спецификация"
 
-#: products/models.py:69
+#: products/models.py:72
 msgid "products"
 msgstr "товары"
 
-#: products/models.py:89
+#: products/models.py:102
 msgid "gallery"
 msgstr "галерея"
 
-#: products/models.py:90
+#: products/models.py:103
 msgid "galleries"
 msgstr "галереи"
+
+#: store/templates/base.html:33
+msgid "Categories"
+msgstr "Категории"
+
+#: store/templates/base.html:43 store/templates/base.html:44
+msgid "Search"
+msgstr "Поиск"
+
+#: store/templates/base.html:53
+msgid "Up"
+msgstr "Вверх"
+
+#: store/templates/products/index.html:33
+#: store/templates/products/index.html:62
+#: store/templates/products/search.html:60
+msgid "Details"
+msgstr "Подробнее"
+
+#: store/templates/products/index.html:41
+msgid "Previous"
+msgstr "Предыдущий"
+
+#: store/templates/products/index.html:45
+msgid "Next"
+msgstr "Следующий"
+
+#: store/templates/products/info.html:55
+msgid "Request call"
+msgstr "Запросить звонок"
+
+#: store/templates/products/search.html:4
+#: store/templates/products/search.html:21
+msgid "Searching"
+msgstr "Поиск"
 
 #~ msgid "IP range"
 #~ msgstr "IP диапазон"

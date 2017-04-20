@@ -1,5 +1,14 @@
 {% extends 'base.html' %}
 
+{% block title %}Главная{% endblock %}
+{% block jsblock %}
+  <script>
+    $(document).ready(function() {
+      $('.image-link').magnificPopup({type:'image'});
+    });
+  </script>
+{% endblock %}
+
 {% block content %}
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -15,7 +24,9 @@
             <div class="carousel-caption d-none d-md-block text-left">
               <h1>{{ popular_product.product.name }}</h1>
               <p>
-                <img src="{{ MEDIA_URL }}{{ popular_product.product.one_image.image }}" alt="" width="300" align="right">
+                <a href="{{ MEDIA_URL }}{{ popular_product.product.one_image.image }}" class="image-link" title="{{ popular_product.product.name }}">
+                  <img src="{{ MEDIA_URL }}{{ popular_product.product.one_image.image }}" alt="{{ popular_product.product.name }}" width="300" align="right">
+                </a>
                 {{ popular_product.product.short_description }}
               </p>
               <p><a class="btn btn-lg btn-primary" href="/{{ popular_product.product.id }}" role="button">Подробнее</a></p>

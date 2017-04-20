@@ -6,7 +6,7 @@ from django.conf import settings
 from django.db.models import Count
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.decorators.cache import cache_page
 
 from feedbacks.models import Request
@@ -62,12 +62,12 @@ def index(request: HttpRequest) -> HttpResponse:
 @cache_page(15 * 60)
 def search(request: HttpRequest) -> HttpResponse:
     page = request.GET.get('page')
-    name = request.GET.get('search')
+    name_search = request.GET.get('search')
     category_id = request.GET.get('category')
 
     products_qs, category = Product.objects_active.all(), None
-    if name:
-        products_qs = products_qs.filter(name__icontains=name)
+    if name_search:
+        products_qs = products_qs.filter(name__icontains=name_search)
     if category_id:
         try:
             category = Category.objects.get(pk=category_id)
@@ -89,5 +89,12 @@ def search(request: HttpRequest) -> HttpResponse:
             'category': category,
             'products_page': products_page,
             'products_rows': products_rows,
+            'name_search': name_search,
         }
     )
+
+
+@cache_page(15 * 60)
+def info(request: HttpRequest, pk: int) -> HttpResponse:
+    product = get_object_or_404(Product, pk=pk)
+    return render(request, 'products/info.html', {'product': product})

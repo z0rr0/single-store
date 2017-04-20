@@ -1,16 +1,28 @@
 {% extends 'base.html' %}
 
+{% block title %}Поиск{% endblock %}
+{% block jsblock %}
+  <script>
+    $(document).ready(function() {
+      $('.image-link').magnificPopup({type:'image'});
+    });
+  </script>
+{% endblock %}
+
 {% block content %}
-
   <div class="container">
-    {% if category %}
-      <div class="row">
-        <div class="col-lg-12">
+    <div class="row">
+      <div class="col-lg-12">
+        {% if category %}
           <h1 class="heading-category">{{ category.name }}</h1>
-        </div>
+        {% else %}
+          {% if name_search %}
+            <h1 class="heading-category">Поиск &laquo;{{ name_search }}&raquo;</h1>
+          {% endif %}
+        {% endif %}
       </div>
-    {% endif %}
-
+    </div>
+        
     {% for products_row in products_rows %}
       <div class="row">
         {% for product in products_row %}
@@ -24,7 +36,9 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="text-center image-box">
-                    <img src="{{ MEDIA_URL }}{{ product.one_image.image }}" class="rounded mx-auto d-block" alt="{{ product.name }}" width="350px">
+                    <a href="{{ MEDIA_URL }}{{ product.one_image.image }}" class="image-link">
+                      <img src="{{ MEDIA_URL }}{{ product.one_image.image }}" class="rounded mx-auto d-block" alt="{{ product.name }}" width="350px" title="{{ product.name }}">
+                    </a>
                   </div>
                 </div>
               </div>
@@ -42,7 +56,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="text-center">
-                    <a href="/" class="btn btn-info">Подробнее</a>
+                    <a href="{% url 'info' product.id %}" class="btn btn-info">Подробнее</a>
                   </div>
                 </div>
               </div>
@@ -51,6 +65,5 @@
         {% endfor %}
       </div>
     {% endfor %}
-
   </div>
 {% endblock %}

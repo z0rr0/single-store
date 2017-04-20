@@ -7,13 +7,16 @@
     <meta name="author" content="">
     <!-- <link rel="icon" href="../../favicon.ico"> -->
 
-    <title>{% block title %}BikeTorg{% endblock %}</title>
+    <title>BikeTorg - {% block title %}{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 
     <!-- Custom styles for this template -->
     <link href="{{ MEDIA_URL }}css/carousel.css" rel="stylesheet">
+
+    <!-- Magnific Popup core CSS file -->
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/magnific-popup.css">
   </head>
   <body>
 
@@ -60,7 +63,10 @@
 
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="{{ MEDIA_URL }}js/holder.min.js"></script>
+    <!-- Magnific Popup core JS file -->
+    <script src="{{ MEDIA_URL }}js/jquery.magnific-popup.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{{ MEDIA_URL }}js/ie10-viewport-bug-workaround.js"></script>
+    {% block jsblock %}{% endblock %}
   </body>
 </html>

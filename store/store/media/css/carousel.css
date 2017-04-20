@@ -111,3 +111,9 @@ body {
   font-size: 28px;
   color: #19055a;
 }
+
+.price-info {
+  font-size: 32px;
+  color: #1d1d5a;
+  margin-bottom: 1rem;
+}

@@ -1,8 +1,11 @@
 # coding: utf-8
+from decimal import Decimal
+
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 
 from libs.utils import batch_split
+from products.models import Product, Category
 
 
 class TestIndex(TestCase):
@@ -11,6 +14,26 @@ class TestIndex(TestCase):
         url = reverse('index')
         resp = self.client.get(url)
         self.assertEqual(resp.status_code, 200)
+
+    def test_search_available(self):
+        url = reverse('search')
+        resp = self.client.get(url)
+        self.assertEqual(resp.status_code, 200)
+
+    def test_info_available(self):
+        category = Category.objects.create(name='test')
+        product = Product.objects.create(
+            name='test',
+            category=category,
+            price=Decimal('100')
+        )
+        url = reverse('info', args=(product.pk,))
+        resp = self.client.get(url)
+        self.assertEqual(resp.status_code, 200)
+
+        url = reverse('info', args=(9999,))
+        resp = self.client.get(url)
+        self.assertEqual(resp.status_code, 404)
 
 
 class TestUtils(TestCase):

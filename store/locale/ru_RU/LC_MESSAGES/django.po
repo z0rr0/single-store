@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 01:08+0300\n"
-"PO-Revision-Date: 2017-04-21 01:10+0300\n"
+"POT-Creation-Date: 2017-04-21 23:09+0300\n"
+"PO-Revision-Date: 2017-04-21 23:11+0300\n"
 "Last-Translator: Alexander Zaytsev <thebestzorro@yandex.ru>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -37,8 +37,8 @@ msgstr "обработан"
 msgid "phone"
 msgstr "телефон"
 
-#: feedbacks/models.py:30 feedbacks/models.py:80 products/models.py:14
-#: products/models.py:42
+#: feedbacks/models.py:30 feedbacks/models.py:80 products/models.py:15
+#: products/models.py:43
 msgid "name"
 msgstr "название"
 
@@ -54,7 +54,7 @@ msgstr "IP адрес"
 msgid "city"
 msgstr "город"
 
-#: feedbacks/models.py:34 products/models.py:71
+#: feedbacks/models.py:34 products/models.py:72
 msgid "product"
 msgstr "товар"
 
@@ -154,61 +154,77 @@ msgstr "Скрытый"
 msgid "status"
 msgstr "статус"
 
-#: products/models.py:15 products/models.py:60
+#: products/models.py:16 products/models.py:61
 msgid "description"
 msgstr "описание"
 
-#: products/models.py:16
+#: products/models.py:17
 msgid "logo"
 msgstr "логотип"
 
-#: products/models.py:23 products/models.py:43
+#: products/models.py:24 products/models.py:44
 msgid "category"
 msgstr "категория"
 
-#: products/models.py:24
+#: products/models.py:25
 msgid "categories"
 msgstr "категории"
 
-#: products/models.py:29
+#: products/models.py:30
 msgid "picture"
 msgstr "изображение"
 
-#: products/models.py:36
+#: products/models.py:37
 msgid "image"
 msgstr "изображение"
 
-#: products/models.py:37
+#: products/models.py:38
 msgid "images"
 msgstr "изображения"
 
-#: products/models.py:44
+#: products/models.py:45
 msgid "price"
 msgstr "цена"
 
-#: products/models.py:46
+#: products/models.py:47
 msgid "relative discount"
 msgstr "относительная скидка"
 
-#: products/models.py:53
+#: products/models.py:54
 msgid "absolute discount"
 msgstr "абсолютная скидка"
 
-#: products/models.py:61
+#: products/models.py:62
 msgid "specification"
 msgstr "спецификация"
 
-#: products/models.py:72
+#: products/models.py:73
 msgid "products"
 msgstr "товары"
 
-#: products/models.py:102
+#: products/models.py:107
 msgid "gallery"
 msgstr "галерея"
 
-#: products/models.py:103
+#: products/models.py:108
 msgid "galleries"
 msgstr "галереи"
+
+#: store/templates/404.html:4 store/templates/404.html:12
+msgid "Page not found"
+msgstr "Страница не найдена."
+
+#: store/templates/404.html:13
+msgid "Sorry, this page is not found. Please check the URL address."
+msgstr "Извините, эта страница не найдена. Пожалуйста проверьте URL адрес."
+
+#: store/templates/500.html:4 store/templates/500.html:12
+msgid "Server Error"
+msgstr "Ошибка сервера"
+
+#: store/templates/500.html:13
+msgid "Sorry, this is unexpected error."
+msgstr "Извините, это непредвиденная ошибка."
 
 #: store/templates/base.html:33
 msgid "Categories"
@@ -236,7 +252,7 @@ msgstr "Предыдущий"
 msgid "Next"
 msgstr "Следующий"
 
-#: store/templates/products/info.html:55
+#: store/templates/products/info.html:58
 msgid "Request call"
 msgstr "Запросить звонок"
 

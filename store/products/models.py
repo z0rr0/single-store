@@ -4,6 +4,7 @@ from decimal import Decimal
 from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.utils.functional import cached_property
 from django.utils.translation import ugettext_lazy as _
 
 from libs.models import CreateUpdate, ActiveState, ActiveManager
@@ -32,7 +33,7 @@ class Image(CreateUpdate):
         return self.picture.name
 
     class Meta(object):
-        ordering = ['-created']
+        ordering = ['pk']
         verbose_name = _('image')
         verbose_name_plural = _('images')
 
@@ -79,9 +80,13 @@ class Product(CreateUpdate, ActiveState):
     def final_price(self) -> Decimal:
         return self.price - self.final_discount
 
-    @property
+    @cached_property
     def one_image(self) -> Image:
-        return self.gallery_set.first()
+        return self.images.first()
+
+    @cached_property
+    def tail_images(self) -> models.QuerySet:
+        return self.images.all()[1:]
 
     @property
     def short_description(self) -> str:

@@ -25,21 +25,23 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-        <div class="container-fluid">
+        <div class="container-fluid parent-container">
           <div class="row">
             <div class="col-sm-12">
               <div class="text-center image-box">
-                <img src="{{ MEDIA_URL }}{{ product.one_image.image }}" class="rounded mx-auto d-block" alt="{{ product.name }}" width="450px" title="{{ product.name }}">
+                <a href="{{ MEDIA_URL }}{{ product.one_image }}" title="{{ product.name }}">
+                  <img src="{{ MEDIA_URL }}{{ product.one_image }}" class="rounded mx-auto d-block" alt="{{ product.name }}" width="450px" title="{{ product.name }}">
+                </a>
               </div>
             </div>
+          </div>
+          <div class="row">
             <div class="col-sm-12">
-              <div class="parent-container">
-                {% for image in product.images.all %}
-                  <a href="{{ MEDIA_URL }}{{ image }}" title="Image-{{ forloop.counter }}-{{ product.name }}">
-                    <img src="{{ MEDIA_URL }}{{ image }}" alt="Image-{{ forloop.counter }}-{{ product.name }}" class="img-thumbnail" width="128">
-                  </a>
-                {% endfor %}
-              </div>
+              {% for image in product.tail_images %}
+                <a href="{{ MEDIA_URL }}{{ image }}" title="Image-{{ forloop.counter }}-{{ product.name }}">
+                  <img src="{{ MEDIA_URL }}{{ image }}" alt="Image-{{ forloop.counter }}-{{ product.name }}" class="img-thumbnail" width="128">
+                </a>
+              {% endfor %}
             </div>
           </div>
         </div>

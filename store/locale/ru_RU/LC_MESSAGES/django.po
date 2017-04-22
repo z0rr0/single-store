@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-22 18:08+0300\n"
-"PO-Revision-Date: 2017-04-22 18:10+0300\n"
+"POT-Creation-Date: 2017-04-22 18:47+0300\n"
+"PO-Revision-Date: 2017-04-22 18:48+0300\n"
 "Last-Translator: Alexander Zaytsev <thebestzorro@yandex.ru>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -25,19 +25,19 @@ msgstr "Объекты успешно обновлены"
 msgid "Go to state"
 msgstr "Изменить статус"
 
-#: feedbacks/forms.py:16
+#: feedbacks/forms.py:15
 msgid "Your name"
 msgstr "Ваше имя"
 
-#: feedbacks/forms.py:17
+#: feedbacks/forms.py:16
 msgid "Phone number"
 msgstr "Телефонный номер"
 
-#: feedbacks/forms.py:18
+#: feedbacks/forms.py:17
 msgid "Email address (optional)"
 msgstr "Адреса эл. почты (необязательно)"
 
-#: feedbacks/forms.py:20
+#: feedbacks/forms.py:19
 msgid "Additional comment"
 msgstr "Дополнительный комментарий"
 
@@ -57,16 +57,16 @@ msgstr "отклонен"
 msgid "handled"
 msgstr "обработан"
 
-#: feedbacks/models.py:29
+#: feedbacks/models.py:29 feedbacks/models.py:128
 msgid "phone"
 msgstr "телефон"
 
-#: feedbacks/models.py:30 feedbacks/models.py:80 products/models.py:15
-#: products/models.py:43
+#: feedbacks/models.py:30 feedbacks/models.py:80 feedbacks/models.py:127
+#: products/models.py:15 products/models.py:43
 msgid "name"
 msgstr "название"
 
-#: feedbacks/models.py:31
+#: feedbacks/models.py:31 feedbacks/models.py:129
 msgid "email"
 msgstr "эл. почта"
 
@@ -122,7 +122,7 @@ msgstr "подтвреждение запроса"
 msgid "seller notification"
 msgstr "уведомление продавцу"
 
-#: feedbacks/models.py:82
+#: feedbacks/models.py:82 feedbacks/models.py:131
 msgid "basic"
 msgstr "основной"
 
@@ -157,6 +157,14 @@ msgstr "шаблон эл. письма"
 #: feedbacks/models.py:95
 msgid "email templates"
 msgstr "шаблоны эл. писем"
+
+#: feedbacks/models.py:130
+msgid "address"
+msgstr "адрес"
+
+#: feedbacks/models.py:135 feedbacks/models.py:136
+msgid "seller details"
+msgstr "данные продавца"
 
 #: libs/models.py:9
 msgid "modified"

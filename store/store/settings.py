@@ -80,6 +80,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'store.context_processors.contact_details',
                 'store.context_processors.categories',
                 'store.context_processors.search',
             ],
@@ -213,6 +214,7 @@ EMAIL_SSL_CERTFILE = None
 SELLERS_EMAILS = ('amdin@localhost',)
 PRODUCT_PAGE_SIZE = 20  # by 2 in row
 SEND_EMAIL_CONFIRMATION = False
+DEFAULT_CACHE_TIMEOUT = 15
 
 # overwrite custom settings
 try:

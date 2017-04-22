@@ -48,7 +48,7 @@ def _popular_products() -> list:
     return products
 
 
-@cache_page(30 * 60)
+@cache_page(settings.DEFAULT_CACHE_TIMEOUT * 60)
 def index(request: HttpRequest) -> HttpResponse:
     category_rows = batch_split(Category.objects.all(), DEFAULT_CATEGORIES_ROW)
     return render(
@@ -61,7 +61,7 @@ def index(request: HttpRequest) -> HttpResponse:
     )
 
 
-@cache_page(15 * 60)
+@cache_page(settings.DEFAULT_CACHE_TIMEOUT * 60)
 def search(request: HttpRequest) -> HttpResponse:
     page = request.GET.get('page')
     name_search = request.GET.get('search', '')
@@ -99,7 +99,7 @@ def search(request: HttpRequest) -> HttpResponse:
     )
 
 
-@cache_page(15 * 60)
+@cache_page(settings.DEFAULT_CACHE_TIMEOUT * 60)
 def info(request: HttpRequest, pk: int) -> HttpResponse:
     product = get_object_or_404(Product, pk=pk)
     form = RequestForm(initial={'product': product.id})

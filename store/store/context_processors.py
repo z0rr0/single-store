@@ -3,6 +3,7 @@
 from django.core.cache import cache
 from django.http import HttpRequest
 
+from feedbacks.models import Contact
 from products.models import Category
 
 
@@ -25,3 +26,17 @@ def search(request: HttpRequest):
     Returns searched value.
     """
     return {'search_value': request.GET.get('search') or ''}
+
+
+def contact_details(request: HttpRequest):
+    """
+    Returns searched value.
+    """
+    key = 'contact'
+    timeout = 15 * 60
+
+    contact = cache.get(key)
+    if not contact:
+        contact = Contact.objects.filter(is_basic=True).first()
+        cache.set(key, contact, timeout)
+    return {'contract': contact}

@@ -47,10 +47,16 @@
 
     {% block content %}{% endblock %}
     <!-- FOOTER -->
-    <div class="container">
+    <div class="container footer">
       <footer>
         <p class="float-right"><a href="#">{% trans "Up" %}</a></p>
-        <p>&copy; 2017 BikeTorg &middot;</p>
+        <p>
+          &copy; 2017 BikeTorg &middot
+          &nbsp;
+          {{ contract.phone }}
+          &nbsp;
+          <a href="mailto:{{ contract.email }}">{{ contract.email }}</a>
+        </p>
       </footer>
     </div>
 

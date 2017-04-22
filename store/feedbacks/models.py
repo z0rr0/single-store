@@ -100,7 +100,7 @@ class EmailTemplate(CreateUpdate):
     @transaction.atomic()
     def save(self, *args, **kwargs):
         if self.is_basic:
-            # turn off other basic one
+            # turn off other basic ones
             EmailTemplate.objects.filter(is_basic=True, assignment=self.assignment).update(is_basic=False)
         super(EmailTemplate, self).save(*args, **kwargs)
 
@@ -119,3 +119,28 @@ class EmailTemplate(CreateUpdate):
     @property
     def is_multipart(self):
         return self.method == self.METHOD_MULTIPART
+
+
+class Contact(CreateUpdate):
+    """Seller details"""
+
+    name = models.CharField(_('name'), max_length=512   )
+    phone = models.CharField(_('phone'), max_length=20)
+    email = models.EmailField(_('email'), max_length=128)
+    address = models.TextField(_('address'), blank=True)
+    is_basic = models.BooleanField(_('basic'), default=False)
+
+    class Meta(object):
+        ordering = ['name']
+        verbose_name = _('seller details')
+        verbose_name_plural = _('seller details')
+
+    def __str__(self):
+        return self.name
+
+    @transaction.atomic()
+    def save(self, *args, **kwargs):
+        if self.is_basic:
+            # turn off other basic ones
+            EmailTemplate.objects.filter(is_basic=True,).update(is_basic=False)
+        super(Contact, self).save(*args, **kwargs)

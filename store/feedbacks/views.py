@@ -62,7 +62,7 @@ def request_email(request: Request) -> None:
 
 @require_POST
 def handle(request: HttpRequest) -> JsonResponse:
-    u"""It handles incoming customers' requests."""
+    """It handles incoming customers' requests."""
     form = RequestForm(request.POST)
     if form.is_valid():
         form.save(commit=False)

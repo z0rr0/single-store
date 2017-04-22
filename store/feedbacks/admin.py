@@ -7,7 +7,7 @@ from django.db import models
 from django.http import HttpResponse, HttpRequest
 from django.utils.translation import ugettext_lazy as _
 
-from feedbacks.models import Request, EmailTemplate
+from feedbacks.models import Request, EmailTemplate, Contact
 
 
 def move_to_confirmed(modeladmin: admin.ModelAdmin, request: HttpRequest, queryset: models.QuerySet):
@@ -65,3 +65,8 @@ class RequestAdmin(admin.ModelAdmin):
 class EmailTemplateAdmin(admin.ModelAdmin):
     list_display = ('name', 'is_basic', 'method', 'assignment', 'subject', 'modified')
     list_filter = ('method', 'assignment')
+
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'is_basic', 'phone', 'email', 'modified')

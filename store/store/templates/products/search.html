@@ -3,7 +3,7 @@
 
 {% block title %}{% trans "Searching" %}{% endblock %}
 {% block jsblock %}
-  <script>
+  <script type="text/javascript">
     $(document).ready(function() {
       $('.image-link').magnificPopup({type:'image'});
     });
@@ -23,7 +23,45 @@
         {% endif %}
       </div>
     </div>
-        
+
+    {% if products_page.has_other_pages %}
+      <div class="row">
+        <div class="col-lg-12">
+          <nav aria-label="page navigation">
+            <ul class="pagination">
+              {% if products_page.has_previous %}
+                <li class="page-item">
+                  <a class="page-link" href="{{ base_url }}&page={{ products_page.previous_page_number }}" aria-label="Previous" title="{% trans "Previous page" %}">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">{% trans "Previous" %}</span>
+                  </a>
+                </li>
+              {% endif %}
+              {% for page in pages %}
+                {% if products_page.number == page %}
+                  <li class="page-item active">
+                    <a class="page-link" href="#">{{ page }}<span class="sr-only">(current)</span></a>
+                  </li>
+                {% else %}
+                  <li class="page-item">
+                    <a class="page-link" href="{{ base_url }}&page={{ page }}" title="{% trans 'Go to page' %} {{ page }}">{{ page }}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+              {% if products_page.has_next %}
+                <li class="page-item">
+                  <a class="page-link" href="{{ base_url }}&page={{ products_page.next_page_number }}" aria-label="Next" title="{% trans "Next page" %}">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">{% trans "Next" %}</span>
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    {% endif %}
+
     {% for products_row in products_rows %}
       <div class="row">
         {% for product in products_row %}
@@ -57,7 +95,7 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="text-center">
-                    <a href="{% url 'info' product.id %}" class="btn btn-info">{% trans "Details" %}</a>
+                    <a href="{% url 'info' product.id %}" class="btn btn-info" title="{% trans "Go to details page" %}">{% trans "Details" %}</a>
                   </div>
                 </div>
               </div>

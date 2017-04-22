@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-21 23:09+0300\n"
-"PO-Revision-Date: 2017-04-21 23:11+0300\n"
+"POT-Creation-Date: 2017-04-22 18:08+0300\n"
+"PO-Revision-Date: 2017-04-22 18:10+0300\n"
 "Last-Translator: Alexander Zaytsev <thebestzorro@yandex.ru>\n"
 "Language-Team: \n"
 "Language: ru_RU\n"
@@ -16,6 +16,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.8.4\n"
+
+#: feedbacks/admin.py:15 feedbacks/admin.py:20 feedbacks/admin.py:25
+msgid "Objects were updated successfully"
+msgstr "Объекты успешно обновлены"
+
+#: feedbacks/admin.py:30 feedbacks/admin.py:33 feedbacks/admin.py:36
+msgid "Go to state"
+msgstr "Изменить статус"
+
+#: feedbacks/forms.py:16
+msgid "Your name"
+msgstr "Ваше имя"
+
+#: feedbacks/forms.py:17
+msgid "Phone number"
+msgstr "Телефонный номер"
+
+#: feedbacks/forms.py:18
+msgid "Email address (optional)"
+msgstr "Адреса эл. почты (необязательно)"
+
+#: feedbacks/forms.py:20
+msgid "Additional comment"
+msgstr "Дополнительный комментарий"
 
 #: feedbacks/models.py:23
 msgid "waiting"
@@ -210,56 +234,83 @@ msgstr "галерея"
 msgid "galleries"
 msgstr "галереи"
 
-#: store/templates/404.html:4 store/templates/404.html:12
+#: store/templates/404.html:4 store/templates/404.html:11
 msgid "Page not found"
 msgstr "Страница не найдена."
 
-#: store/templates/404.html:13
+#: store/templates/404.html:12
 msgid "Sorry, this page is not found. Please check the URL address."
 msgstr "Извините, эта страница не найдена. Пожалуйста проверьте URL адрес."
 
-#: store/templates/500.html:4 store/templates/500.html:12
+#: store/templates/500.html:4 store/templates/500.html:11
 msgid "Server Error"
 msgstr "Ошибка сервера"
 
-#: store/templates/500.html:13
+#: store/templates/500.html:12
 msgid "Sorry, this is unexpected error."
 msgstr "Извините, это непредвиденная ошибка."
 
-#: store/templates/base.html:33
+#: store/templates/base.html:32
 msgid "Categories"
 msgstr "Категории"
 
-#: store/templates/base.html:43 store/templates/base.html:44
+#: store/templates/base.html:42 store/templates/base.html:43
 msgid "Search"
 msgstr "Поиск"
 
-#: store/templates/base.html:53
+#: store/templates/base.html:52
 msgid "Up"
 msgstr "Вверх"
 
 #: store/templates/products/index.html:33
+#: store/templates/products/search.html:98
+msgid "Go to details page"
+msgstr "Перейти на страницу с описанием"
+
+#: store/templates/products/index.html:33
 #: store/templates/products/index.html:62
-#: store/templates/products/search.html:60
+#: store/templates/products/search.html:98
 msgid "Details"
 msgstr "Подробнее"
 
 #: store/templates/products/index.html:41
+#: store/templates/products/search.html:36
 msgid "Previous"
 msgstr "Предыдущий"
 
 #: store/templates/products/index.html:45
+#: store/templates/products/search.html:55
 msgid "Next"
 msgstr "Следующий"
 
-#: store/templates/products/info.html:58
-msgid "Request call"
-msgstr "Запросить звонок"
+#: store/templates/products/info.html:80 store/templates/products/info.html:88
+msgid "Request a callback"
+msgstr "Заказать звонок"
+
+#: store/templates/products/info.html:115
+msgid "Close"
+msgstr "Закрыть"
+
+#: store/templates/products/info.html:116
+msgid "Send"
+msgstr "Отправить"
 
 #: store/templates/products/search.html:4
 #: store/templates/products/search.html:21
 msgid "Searching"
 msgstr "Поиск"
+
+#: store/templates/products/search.html:34
+msgid "Previous page"
+msgstr "Предыдущая страница"
+
+#: store/templates/products/search.html:47
+msgid "Go to page"
+msgstr "Перейти на страницу"
+
+#: store/templates/products/search.html:53
+msgid "Next page"
+msgstr "Следующая страница"
 
 #~ msgid "IP range"
 #~ msgstr "IP диапазон"

@@ -3,7 +3,7 @@
 
 {% block title %}{{ product.name }}{% endblock %}
 {% block jsblock %}
-  <script>
+  <script type="text/javascript">
     $(document).ready(function() {
       $('.parent-container').magnificPopup({
         delegate: 'a',
@@ -12,7 +12,28 @@
             enabled: true
         }
       });
+      $('#requestModel').on('shown.bs.modal', function () {
+        $('#id_name').focus()
+      });
     });
+    function send_request() {
+        var fields = ["name", "phone", "email"];
+        $.post("{% url 'handle' %}", $("#id_request_form").serialize(), "json")
+            .done(function (data) {
+                $('#requestModel').modal('toggle');
+                $("#id_request_form").trigger('reset');
+                fields.forEach(function (name) {
+                    $("#id_form_group_" + name).removeClass("has-danger");
+                    $("#id_feedback_" + name).html("");
+                });
+            })
+            .fail(function (data) {
+                jQuery.each($.parseJSON(data.responseText), function (name, values) {
+                    $("#id_form_group_" + name).addClass("has-danger");
+                    $("#id_feedback_" + name).html(values.join(" "));
+                });
+            });
+    }
   </script>
 {% endblock %}
 
@@ -55,7 +76,47 @@
                   <small><s>{{ product.price|floatformat:"2" }}</s></small>
                 {% endif %}&nbsp;
                 {{ product.final_price|floatformat:"2" }} &#8381;
-                <a href="/" class="btn btn-info">{% trans "Request call" %}</a>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#requestModel">
+                  {% trans "Request a callback" %}
+                </button>
+              </div>
+              <!-- Modal window -->
+              <div id="requestModel" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="requestModelLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="requestModelLabel">{% trans "Request a callback" %}</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="id_request_form" action="#" method="post" onsubmit="return false;">
+                        {% csrf_token %}
+                        {{ form.product }}
+                        <div id="id_form_group_name" class="form-group">
+                          {{ form.name }}
+                          <div id="id_feedback_name" class="form-control-feedback"></div>
+                        </div>
+                        <div id="id_form_group_phone" class="form-group">
+                          {{ form.phone }}
+                          <div id="id_feedback_phone" class="form-control-feedback"></div>
+                        </div>
+                        <div id="id_form_group_email" class="form-group">
+                          {{ form.email }}
+                          <div id="id_feedback_email" class="form-control-feedback"></div>
+                        </div>
+                        <div id="id_form_group_comment" class="form-group">
+                          {{ form.comment }}
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+                      <button type="button" class="btn btn-primary" onclick="send_request();">{% trans "Send" %}</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

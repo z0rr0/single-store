@@ -1,17 +1,19 @@
 # coding: utf-8
 
 from logging import getLogger
+from urllib.parse import urlencode
 
 from django.conf import settings
-from django.db.models import Count
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.db.models import Count
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views.decorators.cache import cache_page
 
+from feedbacks.forms import RequestForm
 from feedbacks.models import Request
-from products.models import Product, Category
 from libs.utils import batch_split
+from products.models import Product, Category
 
 
 logger = getLogger(__name__)
@@ -62,8 +64,9 @@ def index(request: HttpRequest) -> HttpResponse:
 @cache_page(15 * 60)
 def search(request: HttpRequest) -> HttpResponse:
     page = request.GET.get('page')
-    name_search = request.GET.get('search')
-    category_id = request.GET.get('category')
+    name_search = request.GET.get('search', '')
+    category_id = request.GET.get('category', '')
+    params = {'search': name_search, 'category': category_id}
 
     products_qs, category = Product.objects_active.all(), None
     if name_search:
@@ -90,6 +93,8 @@ def search(request: HttpRequest) -> HttpResponse:
             'products_page': products_page,
             'products_rows': products_rows,
             'name_search': name_search,
+            'base_url': '{url}?{query}'.format(url=reverse('search'), query=urlencode(params)),
+            'pages': range(1, paginator.num_pages+1)
         }
     )
 
@@ -97,4 +102,5 @@ def search(request: HttpRequest) -> HttpResponse:
 @cache_page(15 * 60)
 def info(request: HttpRequest, pk: int) -> HttpResponse:
     product = get_object_or_404(Product, pk=pk)
-    return render(request, 'products/info.html', {'product': product})
+    form = RequestForm(initial={'product': product.id})
+    return render(request, 'products/info.html', {'product': product, 'form': form})

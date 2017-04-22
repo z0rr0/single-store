@@ -3,7 +3,7 @@
 
 {% block title %}Главная{% endblock %}
 {% block jsblock %}
-  <script>
+  <script type="text/javascript">
     $(document).ready(function() {
       $('.image-link').magnificPopup({type:'image'});
     });
@@ -30,7 +30,7 @@
                 </a>
                 {{ popular_product.product.short_description }}
               </p>
-              <p><a class="btn btn-lg btn-primary" href="{% url 'info' popular_product.product.id %}" role="button">{% trans "Details" %}</a></p>
+              <p><a class="btn btn-lg btn-primary" href="{% url 'info' popular_product.product.id %}" role="button" title="{% trans "Go to details page" %}">{% trans "Details" %}</a></p>
             </div>
           </div>
         </div>

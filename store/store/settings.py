@@ -212,6 +212,7 @@ EMAIL_SSL_CERTFILE = None
 
 SELLERS_EMAILS = ('amdin@localhost',)
 PRODUCT_PAGE_SIZE = 20  # by 2 in row
+SEND_EMAIL_CONFIRMATION = False
 
 # overwrite custom settings
 try:

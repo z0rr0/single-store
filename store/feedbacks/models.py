@@ -28,7 +28,7 @@ class Request(CreateUpdate, ActiveState):
 
     phone = models.CharField(_('phone'), max_length=20)
     name = models.CharField(_('name'), max_length=512)
-    email = models.CharField(_('email'), max_length=128, blank=True)
+    email = models.EmailField(_('email'), max_length=128, blank=True)
     ip = models.GenericIPAddressField(_('IP address'), blank=True, null=True)
     city = models.CharField(_('city'), max_length=255, blank=True)
     product = models.ForeignKey('products.Product', verbose_name=_('product'), blank=True, null=True)

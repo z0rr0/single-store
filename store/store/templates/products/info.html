@@ -16,18 +16,22 @@
         $('#id_name').focus()
       });
     });
-    function send_request() {
+    function resetFormFields() {
         var fields = ["name", "phone", "email"];
+        fields.forEach(function (name) {
+            $("#id_form_group_" + name).removeClass("has-danger");
+            $("#id_feedback_" + name).html("");
+        });
+    }
+    function sendRequest() {
         $.post("{% url 'handle' %}", $("#id_request_form").serialize(), "json")
             .done(function (data) {
                 $('#requestModel').modal('toggle');
+                resetFormFields();
                 $("#id_request_form").trigger('reset');
-                fields.forEach(function (name) {
-                    $("#id_form_group_" + name).removeClass("has-danger");
-                    $("#id_feedback_" + name).html("");
-                });
             })
             .fail(function (data) {
+                resetFormFields();
                 jQuery.each($.parseJSON(data.responseText), function (name, values) {
                     $("#id_form_group_" + name).addClass("has-danger");
                     $("#id_feedback_" + name).html(values.join(" "));
@@ -113,7 +117,7 @@
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
-                      <button type="button" class="btn btn-primary" onclick="send_request();">{% trans "Send" %}</button>
+                      <button type="button" class="btn btn-primary" onclick="sendRequest();">{% trans "Send" %}</button>
                     </div>
                   </div>
                 </div>

@@ -1,6 +1,6 @@
 # Single-store docker file
 # https://github.com/z0rr0/single-store/
-# Version z0rr0/single-store:0.1.3
+# Version z0rr0/single-store:0.1.4
 # It is an Alpine based containter for python3 django applications.
 
 FROM alpine:edge
@@ -11,7 +11,7 @@ RUN apk add tzdata ca-certificates python3 python3-dev uwsgi-python3 gcc build-b
 
 RUN pip3 install docutils pillow ipython mysqlclient django-debug-toolbar Django==1.11
 
-# build and install django-geoip exclude stadart pip
+# build and install django-geoip exclude standard pip due temporary migration bug
 RUN cd /tmp && \
     git clone https://github.com/futurecolors/django-geoip.git && \
     cd django-geoip && \
